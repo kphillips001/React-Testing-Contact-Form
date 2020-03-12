@@ -1,6 +1,6 @@
 import React from "react";
-import { render, fireEvent, getByRole, getByAltText }  from '@testing-library/react'
-import ContactForm from "./ContactForm";
+import { render }  from '@testing-library/react'
+import ContactForm from './ContactForm';
 
 test("renders Contactform without crashing", () => {
   render(<ContactForm />);
