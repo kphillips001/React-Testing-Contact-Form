@@ -1,18 +1,24 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, getByRole, getByAltText }  from '@testing-library/react'
 import ContactForm from "./ContactForm";
 
-test("renders correctly", () => {
+test("renders Contactform without crashing", () => {
   render(<ContactForm />);
 });
 
-// query for the form inputs
-test("Each form field renders to the DOM", ()=> {
-  const { getByText } = render(<ContactForm />);
+test("Each form field renders to the DOM", () => {
+  //Arrange
+  const {getByLabelText} = render(<ContactForm />);
 
-  //Act
-  const firstName = getByText("First Name*");
-  const lastName = getByText("Last Name*");
-  const email = getByText("Email*");
-  const message = getByText("Message");
+  const fName = getByLabelText(/first name/i);
+  const fName = getByLabelText(/last name/i);
+  const email = getByLabelText(/email/i);
+  const message = getByLabelText(/message/i);
+
+
+  //Assert
+  expect(fName).toBeInTheDocument()
+  expect(fName).toBeInTheDocument()
+  expect(email).toBeInTheDocument()
+  expect(message).toBeInTheDocument()
 })
